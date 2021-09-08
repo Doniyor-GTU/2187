@@ -1,0 +1,249 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Art/Numbers/Theme_1/1.png" type="Texture" id=1]
+[ext_resource path="res://Art/trashcanOpen.png" type="Texture" id=2]
+[ext_resource path="res://Art/finger2.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/TrashButton_Tutorial.gd" type="Script" id=4]
+[ext_resource path="res://themes/1/buttons/Got_it_normal.tres" type="StyleBox" id=5]
+[ext_resource path="res://themes/1/buttons/Got_it_pressed.tres" type="StyleBox" id=6]
+[ext_resource path="res://Fonts/Bumpo.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://themes/1/TutorialPanel.tres" type="StyleBox" id=8]
+[ext_resource path="res://themes/2/buttons/Got_it_normal.tres" type="StyleBox" id=9]
+[ext_resource path="res://themes/2/buttons/Got_it_pressed.tres" type="StyleBox" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Trash_Tutorial"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("finger:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 176.819, 359.3 ), Vector2( 176.819, 359.3 ), Vector2( 176.819, 111 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("finger:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.3, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GridContainer:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 119, 344 ), Vector2( 119, 344 ), Vector2( 119, 111 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("GridContainer:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.4, 0.4 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("trash:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.2, 1.2 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("GridContainer:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/3.png-1f75b26428de3913deaa4149b871bb2f.stex"
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+extra_spacing_top = 6
+font_data = ExtResource( 7 )
+
+[node name="TutorialPanel" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0.290196 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -198.0
+margin_top = -304.0
+margin_right = 198.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 396, 158 )
+custom_styles/panel = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
+anims/Trash_Tutorial = SubResource( 1 )
+
+[node name="trash" type="TextureRect" parent="Panel"]
+modulate = Color( 0.788235, 0.780392, 0.666667, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -50.0
+margin_top = 64.0
+margin_right = 50.0
+margin_bottom = 164.0
+rect_pivot_offset = Vector2( 50, 50 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -79.0
+margin_top = -264.0
+margin_right = 79.0
+margin_bottom = -160.0
+rect_pivot_offset = Vector2( 79, 0 )
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="TextureRect" parent="Panel/GridContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 1 )
+expand = true
+
+[node name="3" type="TextureRect" parent="Panel/GridContainer"]
+margin_left = 54.0
+margin_right = 104.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = SubResource( 2 )
+expand = true
+
+[node name="2" type="TextureRect" parent="Panel/GridContainer"]
+margin_left = 108.0
+margin_right = 158.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 1 )
+expand = true
+
+[node name="4" type="TextureRect" parent="Panel/GridContainer"]
+margin_top = 54.0
+margin_right = 50.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 50, 50 )
+texture = SubResource( 2 )
+expand = true
+
+[node name="finger" type="TextureRect" parent="Panel"]
+margin_left = 176.819
+margin_top = 359.3
+margin_right = 256.872
+margin_bottom = 439.302
+rect_pivot_offset = Vector2( 45, 10 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -74.0
+margin_top = -95.0
+margin_right = 74.0
+margin_bottom = -39.0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "GOT IT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonDarkMode" type="Button" parent="Panel"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -74.0
+margin_top = -95.0
+margin_right = 74.0
+margin_bottom = -39.0
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.211765, 0.211765, 0.211765, 1 )
+custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+custom_colors/font_color_hover = Color( 0.211765, 0.211765, 0.211765, 1 )
+custom_colors/font_color_pressed = Color( 0.211765, 0.211765, 0.211765, 1 )
+text = "GOT IT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Panel"]
+[connection signal="pressed" from="Panel/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Panel/ButtonDarkMode" to="." method="_on_Button_pressed"]

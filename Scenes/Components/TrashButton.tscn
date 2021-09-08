@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://themes/1/TrashButton_pressed.tres" type="StyleBox" id=1]
+[ext_resource path="res://themes/1/TrashButton_normal.tres" type="StyleBox" id=2]
+[ext_resource path="res://Scripts/TrashButton.gd" type="Script" id=3]
+[ext_resource path="res://themes/1/TrashButton_disabled.tres" type="StyleBox" id=4]
+[ext_resource path="res://Art/trashcan.png" type="Texture" id=5]
+[ext_resource path="res://Art/no_connection.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "NoConnection"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("wifi_icon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 1, 1.3, 1.7, 9.9, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ false, true, false, true, false, true, true, false ]
+}
+
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
+}
+
+[node name="TrashButton" type="Button"]
+margin_right = 46.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 46, 46 )
+rect_pivot_offset = Vector2( 23, 23 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+progress_color = Color( 0.788235, 0.780392, 0.666667, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/NoConnection = SubResource( 2 )
+anims/removed = SubResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+modulate = Color( 0.788235, 0.780392, 0.666667, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_progress = ExtResource( 5 )
+fill_mode = 3
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="wifi_icon" type="TextureRect" parent="."]
+visible = false
+modulate = Color( 0.788235, 0.780392, 0.666667, 1 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -6.0
+margin_top = -15.0
+margin_right = 9.0
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="." to="." method="_on_TrashButton_pressed"]

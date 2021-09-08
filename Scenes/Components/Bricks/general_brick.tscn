@@ -1,0 +1,245 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Scenes/Components/Bricks/brick.gd" type="Script" id=1]
+[ext_resource path="res://Art/Numbers/Theme_1/1.png" type="Texture" id=3]
+[ext_resource path="res://Art/Numbers/Theme_1/3.png" type="Texture" id=4]
+[ext_resource path="res://Art/Numbers/Theme_1/9.png" type="Texture" id=5]
+[ext_resource path="res://Art/Numbers/Theme_1/27.png" type="Texture" id=6]
+[ext_resource path="res://Art/Numbers/Theme_1/81.png" type="Texture" id=7]
+[ext_resource path="res://Art/Numbers/Theme_1/2187.png" type="Texture" id=8]
+[ext_resource path="res://Art/Numbers/Theme_1/6561.png" type="Texture" id=9]
+[ext_resource path="res://Art/Numbers/Theme_1/59049.png" type="Texture" id=10]
+[ext_resource path="res://Art/Numbers/Theme_1/729.png" type="Texture" id=11]
+[ext_resource path="res://Art/Numbers/Theme_1/531441.png" type="Texture" id=12]
+[ext_resource path="res://Art/Numbers/Theme_1/177147.png" type="Texture" id=13]
+[ext_resource path="res://Art/Numbers/Theme_1/19683.png" type="Texture" id=14]
+[ext_resource path="res://Art/Numbers/Theme_1/243.png" type="Texture" id=15]
+[ext_resource path="res://Art/Numbers/Theme_1/1594323.png" type="Texture" id=16]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.458824, 0.431373, 0.0666667, 0.415686 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.992157, 1, 0.192157, 1 )
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 20
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Panel
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	visible = false
+
+func set_color(clr : Color):
+	get(\"custom_styles/panel\").border_color = clr
+
+func screen_in():
+	var color = modulate
+	var from = Color(color.r, color.g, color.b, 0)
+	var to = Color(color.r, color.g, color.b, 1)
+	visible = true
+	$Tween.interpolate_property(self, \"modulate\", from, to, 0.01, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+
+func screen_out():
+	var color = modulate
+	var from = Color(color.r, color.g, color.b, 1)
+	var to = Color(color.r, color.g, color.b, 0)
+	$Tween.interpolate_property(self, \"modulate\", from, to, 0.01, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+	yield($Tween, \"tween_all_completed\")
+	visible = false
+	
+"
+
+[node name="general_brick" type="Node2D"]
+scale = Vector2( 0.7, 0.7 )
+script = ExtResource( 1 )
+textures = {
+1: ExtResource( 3 ),
+3: ExtResource( 4 ),
+9: ExtResource( 5 ),
+27: ExtResource( 6 ),
+81: ExtResource( 7 ),
+243: ExtResource( 15 ),
+729: ExtResource( 11 ),
+2187: ExtResource( 8 ),
+6561: ExtResource( 9 ),
+19683: ExtResource( 14 ),
+59049: ExtResource( 10 ),
+177147: ExtResource( 13 ),
+531441: ExtResource( 12 ),
+1594323: ExtResource( 16 )
+}
+grid_type = [ [ Vector2( 0, 0 ), 0 ], [ Vector2( 0, 1 ), 0 ], [ Vector2( 0, 2 ), 0 ], [ Vector2( 1, 0 ), 0 ], [ Vector2( 1, 1 ), 0 ], [ Vector2( 1, 2 ), 0 ], [ Vector2( 2, 0 ), 0 ], [ Vector2( 2, 1 ), 0 ], [ Vector2( 2, 2 ), 0 ] ]
+
+[node name="icons" type="Control" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon1" type="TextureRect" parent="icons"]
+margin_left = -77.8571
+margin_top = -77.8571
+margin_right = -27.8571
+margin_bottom = -27.8571
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="icons"]
+margin_left = -25.0
+margin_top = -77.8571
+margin_right = 25.0
+margin_bottom = -27.8571
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon3" type="TextureRect" parent="icons"]
+margin_left = 27.8571
+margin_top = -77.8571
+margin_right = 77.8571
+margin_bottom = -27.8571
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon4" type="TextureRect" parent="icons"]
+margin_left = -77.8571
+margin_top = -25.0
+margin_right = -27.8571
+margin_bottom = 25.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon5" type="TextureRect" parent="icons"]
+margin_left = -25.0
+margin_top = -25.0
+margin_right = 25.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="Panel" parent="icons/icon5"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 1.0
+margin_bottom = 1.0
+rect_min_size = Vector2( 50, 50 )
+custom_styles/panel = SubResource( 1 )
+script = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Tween" type="Tween" parent="icons/icon5/Border"]
+
+[node name="icon6" type="TextureRect" parent="icons"]
+margin_left = 27.8571
+margin_top = -25.0
+margin_right = 77.8571
+margin_bottom = 25.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon7" type="TextureRect" parent="icons"]
+margin_left = -77.8571
+margin_top = 27.8571
+margin_right = -27.8571
+margin_bottom = 77.8571
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon8" type="TextureRect" parent="icons"]
+margin_left = -25.0
+margin_top = 27.8571
+margin_right = 25.0
+margin_bottom = 77.8571
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon9" type="TextureRect" parent="icons"]
+margin_left = 28.1166
+margin_top = 27.8571
+margin_right = 78.1166
+margin_bottom = 77.8571
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="ExitTween" type="Tween" parent="."]
+
+[node name="ExpandTween" type="Tween" parent="."]
+
+[node name="MoveTween" type="Tween" parent="."]
+
+[connection signal="gui_input" from="icons/icon1" to="." method="_on_icon1_gui_input"]
+[connection signal="gui_input" from="icons/icon2" to="." method="_on_icon2_gui_input"]
+[connection signal="gui_input" from="icons/icon3" to="." method="_on_icon3_gui_input"]
+[connection signal="gui_input" from="icons/icon4" to="." method="_on_icon4_gui_input"]
+[connection signal="gui_input" from="icons/icon5" to="." method="_on_icon5_gui_input"]
+[connection signal="gui_input" from="icons/icon6" to="." method="_on_icon6_gui_input"]
+[connection signal="gui_input" from="icons/icon7" to="." method="_on_icon7_gui_input"]
+[connection signal="gui_input" from="icons/icon8" to="." method="_on_icon8_gui_input"]
+[connection signal="gui_input" from="icons/icon9" to="." method="_on_icon9_gui_input"]

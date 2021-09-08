@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Fonts/911Fonts.com_CenturyGothicRegular__-_911fonts.com_fonts_mhpY.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Art/win_cup.png" type="Texture" id=2]
+
+[sub_resource type="DynamicFont" id=2]
+size = 80
+use_filter = true
+extra_spacing_top = -8
+extra_spacing_bottom = -8
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+use_filter = true
+font_data = ExtResource( 1 )
+
+[node name="HighScore" type="CenterContainer"]
+anchor_right = 1.0
+margin_top = 152.0
+margin_bottom = 271.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 148.0
+margin_right = 428.0
+margin_bottom = 119.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="icon" type="TextureRect" parent="HBoxContainer"]
+modulate = Color( 0.882353, 0.729412, 0.109804, 1 )
+margin_top = 9.0
+margin_right = 100.0
+margin_bottom = 109.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 104.0
+margin_right = 280.0
+margin_bottom = 119.0
+
+[node name="Score" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_right = 176.0
+margin_bottom = 83.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.882353, 0.729412, 0.109804, 1 )
+text = "4046"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 87.0
+margin_right = 176.0
+margin_bottom = 119.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.882353, 0.729412, 0.109804, 1 )
+text = "HIGH SCORE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
