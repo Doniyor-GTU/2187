@@ -1,0 +1,8 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[ext_resource path="res://Fonts/911Fonts.com_CenturyGothicRegular__-_911fonts.com_fonts_mhpY.ttf" type="DynamicFontData" id=1]
+
+[resource]
+size = 50
+use_filter = true
+font_data = ExtResource( 1 )
