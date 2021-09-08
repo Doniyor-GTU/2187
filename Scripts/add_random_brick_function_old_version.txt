@@ -1,0 +1,32 @@
+func add_random_brick():
+	$Timer.start()
+	rect_clip_content = true
+	var rand_idx
+#	if panel_no == 1:
+#		rand_idx = rnd.randi_range(0, 1)
+	if panel_no == 2:
+		var rand_no = rnd.randi_range(0, brick_probability.size()-1)
+		rand_idx = brick_probability[rand_no]
+	else:
+		rand_idx = rnd.randi_range(0, possible_bricks.size()-1)
+	var brick_path = possible_bricks[rand_idx]
+	var brick = brick_path.instance()
+	add_child(brick)
+	if panel_no == 3:
+		var k = 0
+		while not grid_node.is_place_exists(brick.brick_type_array) and k < 100:
+			brick.queue_free()
+			rand_idx = rnd.randi_range(0, possible_bricks.size()-1)
+			brick_path = possible_bricks[rand_idx]
+			brick = brick_path.instance()
+			add_child(brick)
+			k += 1
+	brick.connect("mouse_released", self, "_on_mouse_released")
+	brick.connect("dragged_brick", self, "_on_brick_is_dragged")
+	brick.connect("brick_rotated", self, "_on_brick_rotated")
+	brick.position = rect_size/2
+	brick.initial_pos = brick.position
+	if get_parent().is_brick_add_animation_on:
+		brick.screen_in_from_down()
+	current_brick = brick
+	emit_signal("bricks_added")
